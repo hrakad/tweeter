@@ -15,8 +15,18 @@
   margin: 1.5em;
 }
 
-.write-tweet {
+.nav-content {
   display: flex;
-  font-family: "Source Sans Pro", sans-serif;
+  flex-direction: column;
   margin: 1.5em;
+}
+
+.write-tweet {
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.fas {
+  align-self: center;
+  margin: 15px;
+  color: #ff120a;
 }
