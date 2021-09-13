@@ -23,8 +23,17 @@ body {
   font-family: "Source Sans Pro", sans-serif;
 }
 
-vav span {
+nav span {
   font-family: "Bungee";
+}
+
+.container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  background-color: #e6e2c6;
+  justify-content: center;
+  align-items: center;
 }
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
