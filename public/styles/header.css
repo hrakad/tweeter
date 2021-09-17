@@ -10,6 +10,6 @@ header {
   /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 
-header .name {
+.name {
   align-self: flex-end;
 }
