@@ -36,6 +36,9 @@ nav span {
   align-items: center;
 }
 
+.red {
+  color: #ff0000;
+}
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
