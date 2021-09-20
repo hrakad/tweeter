@@ -4,6 +4,7 @@
   border-width: 5px;
   margin-top: 20px;
   padding: 20px;
+  opacity: 0.5;
 }
 
 .tweet-list-header {
@@ -31,6 +32,7 @@
 
 .tweet-list:hover {
   box-shadow: 10px 10px 5px grey;
+  opacity: 1;
 }
 
 .tweet-list:hover .user-handle {
