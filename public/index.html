@@ -19,12 +19,12 @@
     <!-- External font awesome for icons -->
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
-    
     <!-- App CSS -->
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css"/>
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet-list.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -42,14 +42,15 @@
        <i class="fas fa-angle-double-down"></i>
       </div>
     </nav>
-
-    <header class="header"> 
+  
+    <!-- Header -->
+    <header>
       <div>
-        <img scr="/images/profile-hex.png">
+          <img src="/images/profile-hex.png"> 
       </div>
       <br>
-      <div class="name">
-        <h2>Your Name</h2>
+      <div>
+          <h2>Your Name</h2>
       </div>
     </header>
 
@@ -69,10 +70,39 @@
               <output name="counter" class="counter" for="tweet-text">140</output>
             </div>
           </div>
-  
-          </div>
         </form>
       </section>
+      <section>
+        <article class="tweet-list">
+          <!-- have a header, which contains the user's: avatar, then name, and handle on extreme right -->
+          <header class="tweet-list-header">
+            <div class="avatar-name-wrapper">
+              <img class="avatar" src="/images/profile-hex.png"></img>
+              <label class="user-name">Name</label>
+            </div>
+            <div>
+              <label class="user-handle">Handle</label>
+            </div>
+          </header>
+          <!-- have a body, which contains the tweet text -->
+          <div class="tweet-list-body">
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, animi?</p>
+          </div>
+          <!-- have a footer which displays: how long ago tweet was created on the left, and "Flag", "Re-tweet" and "Like" icons upon hovering over the tweet, on the right -->
+          <footer class="tweet-list-footer">
+            <div>
+              <p>tweet created on</p>
+            </div>
+            <div class="icons">
+              <!-- <p>Flag, Re-Tweet and Like icons</p> -->
+              <i class="fa fa-flag"></i>
+              <i class="fa fa-heart"></i>
+              <i class="fa fa-retweet"></i>
+            </div>
+          </footer>
+        </article>
+  
+        </section>
     </main>
     <footer>
 

@@ -10,7 +10,6 @@ textarea {
   border-top: none;
   border-left: none;
   border-right: none;
-  /* border-bottom: thick; */
   border-width: 5px;
   width: 100%;
   outline: none;
@@ -32,4 +31,8 @@ textarea {
   font-family: "Bungee", cursive;
   font-weight: bold;
   align-self: flex-end;
+}
+
+.red {
+  color: #ff0000;
 }
