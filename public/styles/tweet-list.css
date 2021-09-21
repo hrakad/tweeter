@@ -3,7 +3,7 @@
   border-style: solid;
   border-width: 5px;
   margin-top: 20px;
-  padding: 20px;
+  padding: 10px;
   opacity: 0.5;
 }
 
@@ -21,7 +21,7 @@
 
 .avatar {
   display: flex;
-  height: 100px;
+  height: 60px;
   margin-right: 20px;
 }
 
@@ -36,7 +36,7 @@
 }
 
 .tweet-list:hover .user-handle {
-  opacity: 1;
+  opacity: 0.5;
 }
 
 p {
@@ -51,6 +51,7 @@ p {
   justify-content: space-between;
   border-top: solid;
   border-top-width: 5px;
+  padding-bottom: 0px;
 }
 
 .icons {

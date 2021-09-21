@@ -16,6 +16,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@1,300;1,600&display=swap" rel="stylesheet">
     
+    <!-- External Timeago.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
+
     <!-- External font awesome for icons -->
     <link rel ="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer">
     
@@ -44,12 +47,12 @@
     </nav>
   
     <!-- Header -->
-    <header>
+    <header class="header">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
       <br>
-      <div>
+      <div class="name">
           <h2>Your Name</h2>
       </div>
     </header>
@@ -73,36 +76,10 @@
         </form>
       </section>
       <section>
-        <article class="tweet-list">
-          <!-- Header contains the user's: avatar, then name, and handle on extreme right -->
-          <header class="tweet-list-header">
-            <div class="avatar-name-wrapper">
-              <img class="avatar" src="/images/profile-hex.png"></img>
-              <label class="user-name">Name</label>
-            </div>
-            <div>
-              <label class="user-handle">Handle</label>
-            </div>
-          </header>
-          <!-- Body contains the tweet text -->
-          <div class="tweet-list-body">
-            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, animi?</p>
-          </div>
-          <!-- Footer displays: how long ago tweet was created on the left, and "Flag", "Re-tweet" and "Like" icons upon hovering over the tweet, on the right -->
-          <footer class="tweet-list-footer">
-            <div>
-              <p>tweet created on</p>
-            </div>
-            <div class="icons">
-              <!-- <p>Flag, Re-Tweet and Like icons</p> -->
-              <i class="fa fa-flag"></i>
-              <i class="fa fa-heart"></i>
-              <i class="fa fa-retweet"></i>
-            </div>
-          </footer>
-        </article>
-  
-        </section>
+       <article class="tweet-container">
+
+       </article>
+      </section>
     </main>
     <footer>
 
