@@ -52,7 +52,7 @@ $(document).ready(function() {
     for (const tweet of tweets) {
       //console.log(tweet);
       const $tweet = createTweetElement(tweet);
-      $(".tweet-container").append($tweet);
+      $(".tweet-container").prepend($tweet);
     }
   };
 
@@ -71,7 +71,7 @@ $(document).ready(function() {
       })
       .then(() => {
         $("#tweet-text").val('');
-        location.reload();
+        
       });
     }
 
