@@ -82,4 +82,16 @@ $(document).ready(function() {
 
   // Test / driver code (temporary)
   renderTweets();
+
+  $(".tweet-button").click(event => {
+    event.preventDefault();
+
+    $.ajax({
+      url: "/tweets",
+      method: "post",
+      data: $("#tweet-text").serialize(),
+    })
+    .then($("#tweet-text").val(""));
+  })
+  
 });
