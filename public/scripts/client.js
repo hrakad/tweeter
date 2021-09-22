@@ -58,16 +58,23 @@ $(document).ready(function() {
 
   $(".tweet-button").click(function(event) {
     event.preventDefault();
-  
-    $.ajax({
-      url: "/tweets",
-      method: "post",
-      data: $("#tweet-text").serialize(),
-    })
-    .then(() => {
-      $("#tweet-text").val('');
-      location.reload();
-    });
+    const tweet = $("#tweet-text").val();
+    if (tweet.length <= 0) {
+      alert("Your tweet can't be empty!");
+    } else if (tweet.length > 140) {
+      alert("Maximum number of characters is 140!");
+    } else {
+      $.ajax({
+        url: "/tweets",
+        method: "post",
+        data: $("#tweet-text").serialize(),
+      })
+      .then(() => {
+        $("#tweet-text").val('');
+        location.reload();
+      });
+    }
+
   })
 
   // Test / driver code (temporary)
