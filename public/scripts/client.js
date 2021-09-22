@@ -6,15 +6,15 @@
 
 $(document).ready(function() {
 
-  const createTweetElement = function(data) {
+  const createTweetElement = function(tweet) {
 
-    const userName = data['user']['name'];
-    const avatars = data['user']['avatars'];
-    const userHandle = data['user']['handle'];
-    const tweetBody = data['content']['text'];
+    const userName = tweet['user']['name'];
+    const avatars = tweet['user']['avatars'];
+    const userHandle = tweet['user']['handle'];
+    const tweetBody = tweet['content']['text'];
    
     const tweetMarkUp = `
-      <div class="tweet-list">
+      <article class="tweet-list">
         <!-- Header contains the user's: avatar, then name, and handle on extreme right -->
         <header class="tweet-list-header">
           <div class="avatar-name-wrapper">
@@ -32,7 +32,7 @@ $(document).ready(function() {
         <!-- Footer displays: how long ago tweet was created on the left, and "Flag", "Re-tweet" and "Like" icons upon hovering over the tweet, on the right -->
         <footer class="tweet-list-footer">
           <div class="created-on">
-            <p>${timeago.format(data.created_at)}</p>
+            <p>${timeago.format(tweet.created_at)}</p>
           </div>
           <div class="icons">
             <i class="fa fa-flag"></i>
@@ -40,58 +40,51 @@ $(document).ready(function() {
             <i class="fa fa-retweet"></i>
           </div>
         </footer>
-      </div>
+      </article>
     `;
     return tweetMarkUp;
   };
 
+
   // Test / driver code (temporary). Eventually will get this from the server.
   
-  const renderTweets = function() {
-    for (const data of db) {
-      console.log(data);
-      const $tweet = createTweetElement(data);
+  const renderTweets = function(tweets) {
+    for (const tweet of tweets) {
+      //console.log(tweet);
+      const $tweet = createTweetElement(tweet);
       $(".tweet-container").append($tweet);
     }
   };
-  
-  const db = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1631981176895
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd"
-      },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1632167576895
-    }
-  ];
 
-  // Test / driver code (temporary)
-  renderTweets();
-
-  $(".tweet-button").click(event => {
+  $(".tweet-button").click(function(event) {
     event.preventDefault();
-
+  
     $.ajax({
       url: "/tweets",
       method: "post",
       data: $("#tweet-text").serialize(),
     })
-    .then($("#tweet-text").val(""));
+    .then(() => {
+      $("#tweet-text").val('');
+      location.reload();
+    });
   })
+
+  // Test / driver code (temporary)
+  //renderTweets();
+
+  const loadTweets = function() {
+    $.ajax({
+      url: "/tweets",
+      method: "get",
+      success: (tweets) => {
+        renderTweets(tweets);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+  });
+}
+  loadTweets();
   
 });
