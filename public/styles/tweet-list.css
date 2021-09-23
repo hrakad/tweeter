@@ -4,7 +4,7 @@
   border-width: 5px;
   margin-top: 20px;
   padding: 10px;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 .tweet-list-header {
@@ -21,7 +21,7 @@
 
 .avatar {
   display: flex;
-  height: 60px;
+  height: 40px;
   margin-right: 20px;
 }
 
@@ -62,4 +62,12 @@ p {
 .fa {
   margin-right: 20px;
   color: #394d90;
+}
+
+.fa:hover {
+  color: #f5be58;
+}
+
+.fa:hover .user-handle {
+  opacity: 1;
 }

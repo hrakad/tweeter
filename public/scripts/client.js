@@ -6,13 +6,13 @@
 
 $(document).ready(function() {
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
   const createTweetElement = function(tweet) {
-    const escape = function (str) {
-      let div = document.createElement("div");
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-    };
-
+ 
     const userName = tweet['user']['name'];
     const avatars = tweet['user']['avatars'];
     const userHandle = tweet['user']['handle'];
@@ -74,12 +74,15 @@ $(document).ready(function() {
   };
 
   $(".tweet-button").click(function(event) {
+    $("error-line").hide();
     event.preventDefault();
     const tweet = $("#tweet-text").val();
     if (tweet.length <= 0) {
-      alert("Your tweet can't be empty!");
+      $(".error-message").text("Your tweet can't be empty!");
+      $(".error-line").slideDown();
     } else if (tweet.length > 140) {
-      alert("Maximum number of characters is 140!");
+      $(".error-message").text("Too long. Maximum limit is 140 characters!");
+      $(".error-line").slideDown();
     } else {
       $.ajax({
         url: "/tweets",
@@ -87,10 +90,10 @@ $(document).ready(function() {
         data: $("#tweet-text").serialize(),
       })
       .then(() => {
-        $("#tweet-text").val('');
+        $("#tweet-text").text('140');
         loadTweets();
       });
     }
   })
-  loadTweets();
+  //loadTweets();
 });
