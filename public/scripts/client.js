@@ -7,6 +7,11 @@
 $(document).ready(function() {
 
   const createTweetElement = function(tweet) {
+    const escape = function (str) {
+      let div = document.createElement("div");
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
+    };
 
     const userName = tweet['user']['name'];
     const avatars = tweet['user']['avatars'];
@@ -27,7 +32,7 @@ $(document).ready(function() {
         </header>
         <!-- Body contains the tweet text -->
         <div class="tweet-list-body">
-          <p>${tweetBody}</p>
+          <p>${escape(tweetBody)}</p>
         </div>
         <!-- Footer displays: how long ago tweet was created on the left, and "Flag", "Re-tweet" and "Like" icons upon hovering over the tweet, on the right -->
         <footer class="tweet-list-footer">
@@ -50,10 +55,22 @@ $(document).ready(function() {
   
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
-      //console.log(tweet);
       const $tweet = createTweetElement(tweet);
       $(".tweet-container").prepend($tweet);
     }
+  };
+
+  const loadTweets = function() {
+    $.ajax({
+      url: "/tweets",
+      method: "get",
+      success: (tweets) => {
+        renderTweets(tweets);
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   };
 
   $(".tweet-button").click(function(event) {
@@ -71,27 +88,9 @@ $(document).ready(function() {
       })
       .then(() => {
         $("#tweet-text").val('');
-        
+        loadTweets();
       });
     }
-
   })
-
-  // Test / driver code (temporary)
-  //renderTweets();
-
-  const loadTweets = function() {
-    $.ajax({
-      url: "/tweets",
-      method: "get",
-      success: (tweets) => {
-        renderTweets(tweets);
-      },
-      error: (error) => {
-        console.log(error);
-      },
-  });
-}
   loadTweets();
-  
 });
