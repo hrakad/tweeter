@@ -31,5 +31,20 @@
 .fas {
   align-self: center;
   margin: 15px;
-  color: #ff120a;
+  color: #ff0000;
+}
+
+.slide-button {
+  color: white;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  animation: blinker 1s linear infinite;
+  padding: 0;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
 }

@@ -1,8 +1,8 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+// /*
+//  * Client-side JS logic goes here
+//  * jQuery is already loaded
+//  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
+//  */
 
 $(document).ready(function() {
 
@@ -50,8 +50,9 @@ $(document).ready(function() {
     return tweetMarkUp;
   };
 
-
-  // Test / driver code (temporary). Eventually will get this from the server.
+  $(".slide-button").click(function() {
+    $(".tweet-form").toggle();
+  });
   
   const renderTweets = function(tweets) {
     for (const tweet of tweets) {
@@ -73,8 +74,10 @@ $(document).ready(function() {
     });
   };
 
+//   loadTweets();
+
   $(".tweet-button").click(function(event) {
-    $("error-line").hide();
+    $("error-line").slideUp();
     event.preventDefault();
     const tweet = $("#tweet-text").val();
     if (tweet.length <= 0) {
@@ -91,9 +94,9 @@ $(document).ready(function() {
       })
       .then(() => {
         $("#tweet-text").text('140');
-        loadTweets();
+        window.location.reload();
       });
     }
   })
-  //loadTweets();
+  loadTweets();
 });
