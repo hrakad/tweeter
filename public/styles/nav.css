@@ -8,6 +8,8 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
+  opacity: 1;
 }
 
 .page-title {
@@ -21,21 +23,22 @@
 .nav-content {
   display: flex;
   flex-direction: column;
-  margin: 1.5em;
+  margin: 2em;
 }
 
 .write-tweet {
+  display: flex;
   font-family: "Source Sans Pro", sans-serif;
 }
 
 .fas {
   align-self: center;
-  margin: 15px;
+  margin: 10px;
   color: #ff0000;
 }
 
 .slide-button {
-  color: white;
+  color: #ffffff;
   background-color: transparent;
   border: 0;
   outline: none;
@@ -46,5 +49,13 @@
 @keyframes blinker {
   50% {
     opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-bar {
+    background-color: #a58d7a;
+    background-image: url("https://www.transparenttextures.com/patterns/white-wall-3-2.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   }
 }

@@ -4,20 +4,18 @@
 //  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
 //  */
 
-$(document).ready(function() {
-
+$(document).ready(function () {
   const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
-  const createTweetElement = function(tweet) {
- 
-    const userName = tweet['user']['name'];
-    const avatars = tweet['user']['avatars'];
-    const userHandle = tweet['user']['handle'];
-    const tweetBody = tweet['content']['text'];
-   
+  const createTweetElement = function (tweet) {
+    const userName = tweet["user"]["name"];
+    const avatars = tweet["user"]["avatars"];
+    const userHandle = tweet["user"]["handle"];
+    const tweetBody = tweet["content"]["text"];
+
     const tweetMarkUp = `
       <article class="tweet-list">
         <!-- Header contains the user's: avatar, then name, and handle on extreme right -->
@@ -50,18 +48,26 @@ $(document).ready(function() {
     return tweetMarkUp;
   };
 
-  $(".slide-button").click(function() {
+  $(".slide-button").click(function () {
     $(".tweet-form").toggle();
   });
-  
-  const renderTweets = function(tweets) {
+
+  const generateTweets = function (tweets) {
+    let tweetsMarkup = "";
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $(".tweet-container").prepend($tweet);
+      tweetsMarkup = $tweet + tweetsMarkup;
     }
+    return tweetsMarkup;
   };
 
-  const loadTweets = function() {
+  const renderTweets = function (tweets) {
+    const $tweetsMarkup = generateTweets(tweets);
+
+    $(".tweet-container").html($tweetsMarkup);
+  };
+
+  const loadTweets = function () {
     $.ajax({
       url: "/tweets",
       method: "get",
@@ -74,9 +80,7 @@ $(document).ready(function() {
     });
   };
 
-//   loadTweets();
-
-  $(".tweet-button").click(function(event) {
+  $(".tweet-button").click(function (event) {
     $("error-line").slideUp();
     event.preventDefault();
     const tweet = $("#tweet-text").val();
@@ -91,12 +95,12 @@ $(document).ready(function() {
         url: "/tweets",
         method: "post",
         data: $("#tweet-text").serialize(),
-      })
-      .then(() => {
-        $("#tweet-text").text('140');
-        window.location.reload();
+      }).then(() => {
+        $("#tweet-text").val("");
+        loadTweets();
+        $(".counter").text(140);
       });
     }
-  })
+  });
   loadTweets();
 });
